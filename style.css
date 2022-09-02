@@ -1,0 +1,16 @@
+*{
+    
+}
+
+#daly{
+     border-radius: 3px;
+     margin-right: 7px;
+     padding: 5px;
+     background-color:rgb(225, 100, 78);
+     font-weight: 600;
+     color: #fff;
+}
+
+#news{
+     font-weight: 500;
+}
