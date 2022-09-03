@@ -62,7 +62,7 @@ const displayCatagoris = (data) =>{
                 <i class="fa-regular fa-star"></i>
               </div>
               <div>
-               <button onclick="loadDetails('${_id}')" class="btn"><i class="fa-solid fa-arrow-right"></i></button>
+               <button onclick="loadDetails('${_id}')" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -105,6 +105,8 @@ const loadDetails = async (DeatilsId) =>{
 
 
 const displayAllditels = (data) =>{
+     
+  data
      
 }
 
