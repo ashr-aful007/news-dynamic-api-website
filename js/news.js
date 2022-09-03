@@ -7,15 +7,33 @@ const idSearch = async (id) =>{
 }
 
 const displayCatagoris = (data) =>{
+         
 
-      const newsContainer = document.getElementById('news-Container')
+      const newsContainer = document.getElementById('news-Container')    
+      newsContainer.innerText = '';
+
+
+      const totalResult = document.getElementById('totalResult');
+      totalResult.innerText = data.length;
+
+      const noNews = document.getElementById('noNews-pound');
+      
+      if(data.length === 0){
+        noNews.style.display = 'block'
+        totalResult.style.display = 'none'
+
+      }
+      else{
+        noNews.style.display = 'none'
+        totalResult.style.display = 'block'
+        
+      }
      
+
      data.forEach(news=>{
      const showNews =  document.createElement('div')
-      const {title, total_view, thumbnail_url, author, details } = news;
-    
-
-         console.log(news)
+     //destraching
+      const {title, total_view, thumbnail_url, author, details } = news;      
       showNews.innerHTML = `
       <div class="card mb-3" style="max-width: 950px;">
       <div class="row g-0">
@@ -33,7 +51,7 @@ const displayCatagoris = (data) =>{
                 <p class="d-inline-block fw-semibold">${author.name}</p>
               </div>
               <div>
-                <i class="fa-regular fa-eye">${total_view ? total_view : 'View not pound'}<span> M</span></i>
+                <i class="fa-regular fa-eye">${total_view ? total_view : 'view not pound'}<span> M</span></i>
               </div>
               <div d-inline-block>
                 <i class="fa-regular fa-star-half"></i>
