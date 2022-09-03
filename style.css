@@ -1,6 +1,4 @@
-*{
-    
-}
+
 
 #daly{
      border-radius: 3px;
@@ -13,4 +11,12 @@
 
 #news{
      font-weight: 500;
+}
+
+.text{
+     text-decoration: none;
+     color: rgb(96, 91, 91);
+     font-size: 16px;
+     font-weight: 400;
+     display: block;
 }
