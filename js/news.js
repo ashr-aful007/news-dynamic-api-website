@@ -6,34 +6,35 @@ const idSearch = async (id) =>{
      displayCatagoris(data.data)
 }
 
-const displayCatagoris = (data) =>{
-         
 
-      const newsContainer = document.getElementById('news-Container')    
+const displayCatagoris = (data) =>{
+  
+        const total = document.getElementById('total') 
+        total.innerText = data.length;  
+        toggleSpiner(true)
+      const newsContainer = document.getElementById('news-Container')        
       newsContainer.innerText = '';
 
-
       const totalResult = document.getElementById('totalResult');
-      totalResult.innerText = data.length;
-
       const noNews = document.getElementById('noNews-pound');
-      
+    
       if(data.length === 0){
         noNews.style.display = 'block'
         totalResult.style.display = 'none'
-
+       
       }
-      else{
+     else{
         noNews.style.display = 'none'
         totalResult.style.display = 'block'
-        
+                 
       }
      
 
      data.forEach(news=>{
+        
      const showNews =  document.createElement('div')
      //destraching
-      const {title, total_view, thumbnail_url, author, details } = news;      
+      const {title, total_view, thumbnail_url, author, details, _id} = news;   
       showNews.innerHTML = `
       <div class="card mb-3" style="max-width: 950px;">
       <div class="row g-0">
@@ -61,7 +62,7 @@ const displayCatagoris = (data) =>{
                 <i class="fa-regular fa-star"></i>
               </div>
               <div>
-               <button class="btn"> <i class="fa-solid fa-arrow-right"></i></button>
+               <button onclick="loadDetails('${_id}')" class="btn"><i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -72,6 +73,42 @@ const displayCatagoris = (data) =>{
       newsContainer.appendChild(showNews)
 
      })
+     toggleSpiner(false)
 }
+
+
+// toggle spinar
+const toggleSpiner = isloading =>{
+  const loaderSpinr = document.getElementById('loader');
+  if(isloading == true){
+    loaderSpinr.classList.remove('d-none')
+  }
+  else{
+    loaderSpinr.classList.add('d-none')
+  }
+}
+
+
+
+const loadDetails = async (DeatilsId) =>{
+    const url = `https://openapi.programming-hero.com/api/news/${DeatilsId}`
+    try{
+      const res = await fetch(url)
+      const data = await res.json()
+      displayAllditels(data)
+    }
+    catch(error){
+        console.log(error)
+    }
+
+}
+
+
+const displayAllditels = (data) =>{
+     
+}
+
+
+
 
 idSearch('id')
